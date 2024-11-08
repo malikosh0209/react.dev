@@ -1,0 +1,37 @@
+npx create-react-app kazakh-holidays
+cd kazakh-holidays
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import Calendar from './components/Calendar';
+import HolidayPage from './components/HolidayPage';
+import Quiz from './components/Quiz';
+
+function App() {
+  const [selectedHoliday, setSelectedHoliday] = useState(null);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1>Казахские праздники</h1>
+        <nav>
+          <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/quiz">Викторина</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        {selectedHoliday ? (
+          <HolidayPage holiday={selectedHoliday} />
+        ) : (
+          <Calendar onHolidaySelect={setSelectedHoliday} />
+        )}
+      </main>
+      <footer className="App-footer">
+        {/* ... Footer content ... */}
+      </footer>
+    </div>
+  );
+}
+
+export default App;
